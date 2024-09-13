@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+const bcrypt = require("bcrypt");
 
 const {Schema,model} = mongoose;
 
@@ -21,7 +22,15 @@ const userSchema = new Schema({
     password : {
         type : String,
         required: [true,"Password required"],
-        set : 
+        set : (v)=> bcrypt.hashSync(v,bcrypt.genSaltSync(10))
+    },
+    address : {
+        type : String,
+    },
+    role : {
+        type : String,
+        enum : ["admin","super-admin","user"],
+        default : "admin"
     }
 },{
     timestamps:true,
