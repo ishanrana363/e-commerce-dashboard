@@ -7,8 +7,8 @@ const cors = require("cors")
 const mongoSanitize = require('express-mongo-sanitize');
 const cookieParser = require('cookie-parser')
 const connectDB = require("./db");
-const routes = require("./src/routes/api");
-const adminRoutes = require("./src/routes/adminRoutes")
+// const routes = require("./src/routes/api");
+// const adminRoutes = require("./src/routes/adminRoutes")
 
 
 
@@ -57,12 +57,16 @@ app.use(express.json({limit: '1000mb'}));
 
 connectDB().catch(err => console.log(err));
 
+app.get("/",async(req,res)=>{
+    res.send("server run successfully")
+});
+
 
 // api file import
 
 
-app.use("/api/v1",routes);
-app.use("/api/v1",adminRoutes);
+// app.use("/api/v1",routes);
+// app.use("/api/v1",adminRoutes);
 
 
 
