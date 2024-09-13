@@ -7,8 +7,6 @@ const cors = require("cors")
 const mongoSanitize = require('express-mongo-sanitize');
 const cookieParser = require('cookie-parser')
 const connectDB = require("./db");
-// const routes = require("./src/routes/api");
-// const adminRoutes = require("./src/routes/adminRoutes")
 
 
 
@@ -64,9 +62,11 @@ app.get("/",async(req,res)=>{
 
 // api file import
 
+const routes = require("./src/routes/api");
 
-// app.use("/api/v1",routes);
-// app.use("/api/v1",adminRoutes);
+
+app.use("/api/v1",routes);
+
 
 
 
