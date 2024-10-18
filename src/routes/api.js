@@ -12,6 +12,8 @@ const authController = require("../controllers/authController");
 const productController = require("../controllers/productController");
 // brand controller
 const brandController = require("../controllers/brandController");
+// category controller
+const categoryController = require("../controllers/categoryController");
 
 // user related api
 
@@ -35,6 +37,10 @@ router.post("/product/create", productController.productCreate);
 // brand related api
 
 router.post("/brand/create", brandController.brandCreate);
+
+// category related api
+
+router.post("/category/create", categoryController.categoryCreate);
 
 
 module.exports = router;
