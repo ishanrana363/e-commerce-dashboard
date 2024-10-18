@@ -16,7 +16,7 @@ const productSchema = new Schema({
         required : [true,"Price is required"]
     },
     discount : {
-        type : Number,
+        type : Boolean,
     },
     discountPrice : {
         type : Number,
