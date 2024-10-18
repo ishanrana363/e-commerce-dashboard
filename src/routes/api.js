@@ -8,6 +8,10 @@ const router = express.Router()
 const userController = require("../controllers/userController");
 // user auth controller
 const authController = require("../controllers/authController");
+// product controller
+const productController = require("../controllers/productController");
+// brand controller
+const brandController = require("../controllers/brandController");
 
 // user related api
 
@@ -24,6 +28,13 @@ router.post
     "/sing-in",
     authController.signIn
 );
+
+// product related api
+router.post("/product/create", productController.productCreate);
+
+// brand related api
+
+router.post("/brand/create", brandController.brandCreate);
 
 
 module.exports = router;
