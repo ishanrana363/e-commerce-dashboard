@@ -15,6 +15,8 @@ const productController = require("../controllers/productController");
 const brandController = require("../controllers/brandController");
 // category controller
 const categoryController = require("../controllers/categoryController");
+// product details controller
+const productDetailsController = require("../controllers/productDetailsController");
 
 // user related api
 
@@ -58,5 +60,14 @@ router.put("/category/update/:categoryId", isLogIn,isAdmin,categoryController.ca
 router.delete("/category/delete/:categoryId", isLogIn, isAdmin, categoryController.categoryDelete);
 router.get("/category/list/admin/:pageNo/:perPage/:searchValue" , isLogIn,isAdmin,categoryController.categoryListAdmin);
 router.get("/category/list", categoryController.categoryList);
+
+// product details related api
+
+router.post("/product-details/create", isLogIn, isAdmin, productDetailsController.productDetailsCreate);
+// router.put("/product-details/update/:productDetailsId", isLogIn, isAdmin, productDetailsController.productDetailsUpdate);
+// router.delete("/product-details/delete/:productDetailsId", isLogIn, isAdmin, productDetailsController.productDetailsDelete);
+// router.get("/product-details/list/:productId", productDetailsController.productDetailsList);
+
+
 
 module.exports = router;
