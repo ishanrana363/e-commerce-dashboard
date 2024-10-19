@@ -3,7 +3,8 @@ const  express = require('express');
 const router = express.Router()
 
 
-
+// auth controller
+const {isLogIn,isLogOut,isAdmin} = require("../middleware/authMiddleware")
 // user controller
 const userController = require("../controllers/userController");
 // user auth controller
@@ -19,9 +20,11 @@ const categoryController = require("../controllers/categoryController");
 
 router.post
 (
-    "/user/sign-in",
-    userController.signIn
+    "/user/sign-up",
+    userController.signUp
 );
+
+router.get("/user-profile", isLogIn, userController.userProfile);
 
 // auth related api
 

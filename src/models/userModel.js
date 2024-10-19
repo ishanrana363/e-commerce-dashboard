@@ -27,6 +27,9 @@ const userSchema = new Schema({
     address : {
         type : String,
     },
+    img : {
+        type : String,
+    },
     role : {
         type : String,
         enum : ["admin","super-admin","user"],
