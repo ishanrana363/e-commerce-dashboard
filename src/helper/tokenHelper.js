@@ -1,8 +1,8 @@
-const jwt = require("jsonwebtoken");
+const jwt = require("jsonwebtoken")
 
-const encodeToken = (data,key,expireIn)=>{
-    const token = jwt.sign(data,key, {expireIn} );
+const tokenCreate = (data, key, expiresIn) => {
+    const token = jwt.sign(data, key, { expiresIn });
     return token;
-}
+};
 
-module.exports = {encodeToken};
+module.exports = { tokenCreate };

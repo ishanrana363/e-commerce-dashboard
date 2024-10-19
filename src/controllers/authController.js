@@ -1,7 +1,7 @@
-const { encodeToken } = require("../helper/tokenHelper");
 const userModel = require("../models/userModel");
 const bcrypt = require('bcrypt');
 const accessTokenKey = process.env.JWT_KEY; 
+const {tokenCreate} = require("../helper/tokenHelper")
 
 class authClass {
     signIn = async (req, res) => {
@@ -23,7 +23,7 @@ class authClass {
             
             // create access token
 
-            const token = encodeToken(
+            const token = tokenCreate (
                 {userData},
                 accessTokenKey,
                 "10m"
@@ -33,10 +33,11 @@ class authClass {
             return res.status(200).json({
                 status: "success",
                 msg: "Sign-in successful",
-                data : userData
+                token : token
             });
             
         } catch (error) {
+            console.log(error);
             return res.status(500).json({
                 status: "fail",
                 msg: error.toString()

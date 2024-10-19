@@ -1,7 +1,7 @@
 const userModel = require("../models/userModel");
 
 class userClass {
-    signIn = async (req,res)=>{
+    signUp = async (req,res)=>{
         try {
             let {name,email,phone,password,address} = req.body;
             let emailExists = await userModel.findOne({email:email});

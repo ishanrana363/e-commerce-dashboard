@@ -19,8 +19,8 @@ const categoryController = require("../controllers/categoryController");
 
 router.post
 (
-    "/user/sign-in",
-    userController.signIn
+    "/user/sign-up",
+    userController.signUp
 );
 
 // auth related api
