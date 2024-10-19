@@ -25,6 +25,7 @@ router.post
 );
 
 router.get("/user-profile", isLogIn, userController.userProfile);
+router.put("/user-profile-update", isLogIn, userController.userProfileUpdate);
 
 // auth related api
 

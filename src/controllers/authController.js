@@ -26,7 +26,7 @@ class authClass {
             const token = tokenCreate (
                 {userData},
                 accessTokenKey,
-                "10m"
+                "10d"
             );
 
             
