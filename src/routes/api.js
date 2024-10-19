@@ -37,15 +37,16 @@ router.post
 );
 
 // product related api
-router.post("/product/create", productController.productCreate);
+router.post("/product/create", isLogIn,isAdmin, productController.productCreate);
 
 // brand related api
 
-router.post("/brand/create", brandController.brandCreate);
+router.post("/brand/create", isLogIn, isAdmin , brandController.brandCreate);
 
 // category related api
 
-router.post("/category/create", categoryController.categoryCreate);
+router.post("/category/create", isLogIn,isAdmin,categoryController.categoryCreate);
+router.put("/category/update/:categoryId", isLogIn,isAdmin,categoryController.categoryUpdate)
 
 
 module.exports = router;
