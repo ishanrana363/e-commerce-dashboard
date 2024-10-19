@@ -107,7 +107,7 @@ exports.brandListAdmin = async (req, res) => {
         let data;
         if (searchValue !== "0" && searchValue !== "") {
             let searchRegex = { "$regex": searchValue, "$options": "i" };
-            let searchQuery = { $or: [{ categoryName: searchRegex }] };
+            let searchQuery = { $or: [{ brandName: searchRegex }] };
             data = await brandModel.aggregate([
                 {
                     $facet: {
@@ -128,13 +128,13 @@ exports.brandListAdmin = async (req, res) => {
         }
 
         res.status(200).send({
-            msg: "category fetched successfully",
+            msg: "brand fetched successfully",
             status: "success",
             data: data
         });
     } catch (error) {
         res.status(500).send({
-            msg: "Failed to fetch category",
+            msg: "Failed to fetch brand",
             status: "fail",
             error: error.toString()
         });
