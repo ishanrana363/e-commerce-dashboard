@@ -46,7 +46,9 @@ router.post("/brand/create", isLogIn, isAdmin , brandController.brandCreate);
 // category related api
 
 router.post("/category/create", isLogIn,isAdmin,categoryController.categoryCreate);
-router.put("/category/update/:categoryId", isLogIn,isAdmin,categoryController.categoryUpdate)
-
+router.put("/category/update/:categoryId", isLogIn,isAdmin,categoryController.categoryUpdate);
+router.delete("/category/delete/:categoryId", isLogIn, isAdmin, categoryController.categoryDelete);
+router.get("/category/list/admin/:pageNo/:perPage/:searchValue" , isLogIn,isAdmin,categoryController.categoryListAdmin);
+router.get("/category/list", categoryController.categoryList);
 
 module.exports = router;
