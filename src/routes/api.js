@@ -40,6 +40,8 @@ router.post
 router.post("/product/create", isLogIn,isAdmin, productController.productCreate);
 router.put("/product/update/:productId", isLogIn, isAdmin, productController.productUpdate);
 router.delete("/product/delete/:productId", isLogIn, isAdmin, productController.productDelete);
+router.get("/product/list", productController.productList);
+router.get("/product/list/:pageNo/:perPage/:searchKeyword", isLogIn, isAdmin,  productController.productListAdmin);
 
 // brand related api
 
