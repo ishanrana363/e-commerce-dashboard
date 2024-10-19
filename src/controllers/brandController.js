@@ -77,6 +77,7 @@ exports.brandDelete = async (req, res) => {
     }
 };
 
+
 exports.brandList = async (req, res) => {
     try {
         let data = await brandModel.find();

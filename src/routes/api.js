@@ -44,6 +44,8 @@ router.post("/product/create", isLogIn,isAdmin, productController.productCreate)
 router.post("/brand/create", isLogIn, isAdmin , brandController.brandCreate);
 router.put("/brand/update/:brandId", isLogIn, isAdmin, brandController.brandUpdate);
 router.delete("/brand/delete/:brandId", isLogIn, isAdmin, brandController.brandDelete);
+router.get("/brandlist", brandController.brandList);
+
 // category related api
 
 router.post("/category/create", isLogIn,isAdmin,categoryController.categoryCreate);
