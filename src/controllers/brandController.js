@@ -1,4 +1,7 @@
+const { default: mongoose } = require("mongoose");
 const brandModel = require("../models/brandModel");
+const productModel = require("../models/productModel");
+const checkAssociate = require("../services/checkAssociate");
 
 exports.brandCreate = async (req,res)=>{
     try {
@@ -48,22 +51,23 @@ exports.brandUpdate = async (req, res) => {
     }
 };
 
+
 exports.brandDelete = async (req, res) => {
     try {
-        const id = new mongoose.Types.ObjectId(req.params.categoryId);
-        const associate = await checkAssociate({ categoryID: id }, productModel);
+        const id = new mongoose.Types.ObjectId(req.params.brandId);
+        const associate = await checkAssociate({ brandID: id }, productModel);
         if (associate) return res.status(400).json({
             status: "fail",
-            msg: "Cannot delete category with associated products"
+            msg: "Cannot delete brand with associated products"
         });
-        const categoryData = await brandModel.findByIdAndDelete(id);
-        if (!categoryData) return res.status(404).json({
+        const brandData = await brandModel.findByIdAndDelete(id);
+        if (!brandData) return res.status(404).json({
             status: "fail",
-            msg: "Category not found"
+            msg: "Brand not found"
         });
         return res.status(200).json({
             status: "success",
-            msg: "Category deleted successfully"
+            msg: "Brand deleted successfully"
         })
     } catch (error) {
         return res.status(500).json({
