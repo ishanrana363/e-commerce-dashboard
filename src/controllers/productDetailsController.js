@@ -1,4 +1,5 @@
 const productDetailsModel = require("../models/productDetailsModel");
+const { productDetailsService } = require("../services/productDetailsService");
 
 
 exports.productDetailsCreate = async (req, res) => {
@@ -63,4 +64,38 @@ exports.productDetailsUpdate = async (req, res) => {
             msg: "Internal server error"
         });
     }
+};
+
+exports.productDetailsDelete = async (req, res) => {
+    try {
+        let productDetailsID = req.params.productDetailsId;
+        const filter = {_id : productDetailsID};
+        let productDetailsData = await productDetailsModel.findByIdAndDelete(filter);
+        
+        // If no product details are found, send a 404 response
+        if (!productDetailsData) {
+            return res.status(404).json({
+                status: "fail",
+                msg: "Product details not found"
+            });
+        }
+        
+        // If the deletion is successful, send a success response
+        res.status(200).json({
+            status: "success",
+            msg: "Product details deleted successfully"
+        });
+        
+    } catch (error) {
+        // If an error occurs, send a 500 response with an error message
+        res.status(500).json({
+            status: "fail",
+            msg: "Internal server error"
+        });
+    }
+};
+
+exports.productDetailsList = async (req, res) => {
+    const data = await productDetailsService();
+    res.send(data);
 };
