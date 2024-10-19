@@ -1,6 +1,6 @@
 const productModel = require("../models/productModel");
 
-export const productCreate = async (req, res) => {
+exports.productCreate = async (req, res) => {
     try {
         let reqBody = req.body;
         const data = await productModel.create(reqBody);
