@@ -75,6 +75,29 @@ class userClass {
             });
         }
     };
+
+    userRoleUpdate = async (req,res)=>{
+        try {
+            let id = req.params.userId;
+            let filter = {_id : id};
+            let update = {role : "admin"};
+            let user = await userModel.findOneAndUpdate(filter,update,{new:true});
+            if (!user) return res.status(404).json({
+                status: "fail",
+                msg: "User not found"
+            });
+            res.status(200).json({
+                status: "success",
+                msg: "User role updated successfully",
+                data: user
+            })
+        } catch (error) {
+            return res.status(500).json({
+                status: "fail",
+                msg: error.toString()
+            })
+        }
+    }
 }
 
 const userController = new userClass();

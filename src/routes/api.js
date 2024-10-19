@@ -26,6 +26,7 @@ router.post
 
 router.get("/user-profile", isLogIn, userController.userProfile);
 router.put("/user-profile-update", isLogIn, userController.userProfileUpdate);
+router.get("/update-user-role/:userId", isLogIn, isAdmin, userController.userRoleUpdate)
 
 // auth related api
 
