@@ -38,6 +38,8 @@ router.post
 
 // product related api
 router.post("/product/create", isLogIn,isAdmin, productController.productCreate);
+router.put("/product/update/:productId", isLogIn, isAdmin, productController.productUpdate);
+router.delete("/product/delete/:productId", isLogIn, isAdmin, productController.productDelete);
 
 // brand related api
 
