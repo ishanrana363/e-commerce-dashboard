@@ -1,6 +1,6 @@
 const brandModel = require("../models/brandModel");
 
-export const brandCreate = async (req,res)=>{
+exports.brandCreate = async (req,res)=>{
     try {
         let reqBody = req.body;
         let data = await brandModel.create(reqBody);
