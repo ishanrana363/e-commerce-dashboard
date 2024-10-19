@@ -1,5 +1,5 @@
 const jwt = require("jsonwebtoken");
-const accessTokenKey = process.env.JWTKEY;
+const accessTokenKey = process.env.JWT_KEY;
 
 const isLogIn = (req, res, next) => {
     try {
@@ -28,15 +28,12 @@ const isLogIn = (req, res, next) => {
             });
         }
 
-        console.log(decode);
-
-
-        let _id = decode.user._id;
-        req.headers._id = _id;
-        let email = decode.user.email;
+        const id = decode.userData._id;
+        const email = decode.userData.email;
+        const role = decode.userData.role;
         req.headers.email = email;
-        let role = decode.user.role;
         req.headers.role = role;
+        req.headers.id = id
         next();
 
 

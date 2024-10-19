@@ -29,6 +29,26 @@ class userClass {
             });
         }
     };
+    userProfile = async (req, res) => {
+        try {
+            let id = req.headers.id;
+            let user = await userModel.findById({_id : id});
+            if(!user) return res.status(404).json({
+                status : "fail",
+                msg : "User not found"
+            });
+            return res.status(200).json({
+                status : "success",
+                msg : "User profile",
+                data : user
+            });
+        } catch (error) {
+            return res.status(500).json({
+                status : "fail",
+                msg : error.toString()
+            });
+        }
+    };
 }
 
 const userController = new userClass();
