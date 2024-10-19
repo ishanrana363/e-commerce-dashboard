@@ -49,5 +49,6 @@ router.post("/category/create", isLogIn,isAdmin,categoryController.categoryCreat
 router.put("/category/update/:categoryId", isLogIn,isAdmin,categoryController.categoryUpdate);
 router.delete("/category/delete/:categoryId", isLogIn, isAdmin, categoryController.categoryDelete);
 router.get("/category/list/admin/:pageNo/:perPage/:searchValue" , isLogIn,isAdmin,categoryController.categoryListAdmin);
+router.get("/category/list", categoryController.categoryList);
 
 module.exports = router;

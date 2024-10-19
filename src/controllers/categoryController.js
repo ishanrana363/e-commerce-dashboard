@@ -78,6 +78,21 @@ exports.categoryDelete = async (req, res) => {
     }
 };
 
+exports.categoryList = async (req, res) => {
+    try {
+        let data = await categoryModel.find();
+        res.status(200).json({
+            status: "success",
+            data: data
+        });
+    } catch (error) {
+        return res.status(500).json({
+            status: "fail",
+            msg: "Internal server error"
+        })
+    }
+};
+
 exports.categoryListAdmin = async (req, res) => {
     try {
 
