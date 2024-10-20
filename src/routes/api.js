@@ -67,6 +67,7 @@ router.post("/product-details/create", isLogIn, isAdmin, productDetailsControlle
 router.put("/product-details/update/:productDetailsID", isLogIn, isAdmin, productDetailsController.productDetailsUpdate);
 router.delete("/product-details/delete/:productDetailsId", isLogIn, isAdmin, productDetailsController.productDetailsDelete);
 router.get("/product-details/list", productDetailsController.productDetailsList);
+router.get("/single-product-list/:productId" , productDetailsController.singleProductList)
 
 
 

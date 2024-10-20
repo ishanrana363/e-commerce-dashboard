@@ -1,5 +1,5 @@
 const productDetailsModel = require("../models/productDetailsModel");
-const { productDetailsService } = require("../services/productDetailsService");
+const { productDetailsService, singleProductListService } = require("../services/productDetailsService");
 
 
 exports.productDetailsCreate = async (req, res) => {
@@ -97,5 +97,10 @@ exports.productDetailsDelete = async (req, res) => {
 
 exports.productDetailsList = async (req, res) => {
     const data = await productDetailsService();
+    res.send(data);
+};
+
+exports.singleProductList = async (req, res) => {
+    const data = await singleProductListService(req);
     res.send(data);
 };
